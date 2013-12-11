@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>H&M</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<script type="text/javascript" src="scripts/email.js"></script>
+	<link href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" rel="stylesheet" />
+	<link href="css/jquery-mobile.css" type="text/css" rel="stylesheet" />
+	
+	<link href="css/photoswipe.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="js/klass.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+	<script type="text/javascript" src="js/code.photoswipe.jquery-3.0.5.min.js"></script>
+	
+	<style type="text/css">
+
+.ui-page {
+    background: url(images/bbq1.png) no-repeat center center fixed;
+    background-position:center center;
+    background-attachment:scroll;
+    background-size:100% 100% !important;
+}
+.ui-content{
+    background: transparent;
+}
+</style>
+	
+	<script type="text/javascript">
+		
+		/*
+		 * IMPORTANT!!!
+		 * REMEMBER TO ADD  rel="external"  to your anchor tags. 
+		 * If you don't this will mess with how jQuery Mobile works
+		 */
+		
+		(function(window, $, PhotoSwipe){
+			
+			$(document).ready(function(){
+				
+				$('div.gallery-page')
+					.live('pageshow', function(e){
+						
+						var 
+							currentPage = $(e.target),
+							options = {},
+							photoSwipeInstance = $("ul.gallery a", e.target).photoSwipe(options,  currentPage.attr('id'));
+							
+						return true;
+						
+					})
+					
+					.live('pagehide', function(e){
+						
+						var 
+							currentPage = $(e.target),
+							photoSwipeInstance = PhotoSwipe.getInstance(currentPage.attr('id'));
+
+						if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null) {
+							PhotoSwipe.detatch(photoSwipeInstance);
+						}
+						
+						return true;
+						
+					});
+				
+			});
+		
+		}(window, window.jQuery, window.Code.PhotoSwipe));
+		
+	</script>
+	
+</head>
+<body>
+
+<div data-role="page" id="Home">
+<br><br><br><br><br><br><br><br>
+	<div data-role="content" >		
+		
+		<ul data-role="listview" data-theme="d" data-inset="true">
+		<li><a href="aboutus.html"><img src="images/info.png" /><h3>About Us</h3></a></li> 
+		<li><a href="menu.html"><img src="images/ca.png" /><h3>Menu</h3></a></li> 
+		<li><a href="#callAjaxPage"><img src="images/cal.png" /><h3>Order Now</h3></a></li>  
+			<li><a href="map.html"><img src="images/phone.png" /><h3>Contact Us</h3></a></li> 
+		</ul> 
+
+		</div>
+<div data-role="footer" data-theme="d" data-position="fixed">
+	<h1></h1>
+</div>
+	</div>
+      
+</div>
+
+
+<div data-role="page" data-add-back-btn="true" id="callAjaxPage" class="gallery-page">
+<script type="text/javascript" src="scripts/email.js"></script>
+	<br><br><br><br><br><br><br><br>
+
+	<div data-role="content">	
+		
+<form id="callAjaxForm">
+                <div data-role="fieldcontain">
+				<center><TABLE BORDER="0">
+                   <TR>
+                    <TD><label for="firstName">Name</label></TD>
+                   <TD> <input type="text" name="Name" id="Name" value=""  />
+					</TD>
+					<TR>
+					
+					
+					 <TD><label for="date">Date: </label></TD>
+                   <TD> <input type="date" name="date" id="date" value=""  /></TD>
+					</TR>
+					<TR>
+					<TD><label for="time">Time:</label></TD>
+                    <TD><input type="time" name="time" id="time" value=""  /></TD>
+					</TR>
+					<TR>
+					
+					<TD><label for="phone">Phone:</label></TD>
+                   <TD><input type="text" name="phone" id="phone" value=""  /></TD>
+					</TR>
+					<TR>
+					
+	<TD><label for="chicken" class="select" data-theme="d" >Chicken</label></TD>
+					<TD>	<select name="chicken" id="chicken" data-theme="d">
+					<option value="None">None</option>
+							<option value= "Parry of 25-Chicken">Parry of 25:$112.00</option>
+							<option value="Parry of 50-Chicken">Parry of 50:$200.00</option>
+							<option value="Parry of 75-Chicken">Parry of 75 :$288.00</option>
+							<option value="Parry of 100-Chicken">Parry of 100 :$376.00</option>
+						
+						</select>
+
+						</TD>
+					
+						</TR>
+						
+					<TR>
+						
+						<TD>	<label for="rib" class="select" data-theme="d" >Ribs</label></TD>
+						<TD><select name="rib" id="rib" data-theme="d">
+						<option value="None">None</option>
+							<option value="Parry of 25-Rib">Parry of 25:$112.00</option>
+							<option value="Parry of 50-Rib">Parry of 50:$200.00</option>
+							<option value="Parry of 75-Rib">Parry of 75:$288.00</option>
+							<option value="Parry of 100-Rib">Parry of 100:$376.00</option>
+						</select></TD>
+						
+					
+						</TR>
+					<TR>
+						
+							<TD><label for="pork" class="select" data-theme="d" >Pork</label></TD>
+						<TD><select name="pork" id="pork" data-theme="d">
+						<option value="None">None</option>
+							<option value="Pulled Pork">Pulled Pork): $10/lb </option>
+							<option value="Sausages">Sausages: $3.00</option>
+						</select>
+						</TD>
+					
+						</TR>
+					<TR>
+						
+							<TD><label for="side" class="select" data-theme="d" >Sides(per pan)</label></TD>
+						<TD><select name="side" id="side" data-theme="d">
+						<option value="None">None</option>
+							<option value="Baked Beans">Baked Beans:$20.00</option>
+							<option value="Cole Slaw">Cole Slaw:$20.00</option>
+							<option value="Macaroni and Cheese">Macaroni and Cheese:$30.00</option>
+							<option value="Potato Salad">Potato Salad: $30.00</option>
+							<option value="Collard Greens">Collard Greens: $30.00</option>
+						</select></TD>
+						<TD>
+						<label for="qtySide" class="select" data-theme="d" ></label>
+						<select name="qtySide" id="qtyside" data-theme="d">
+						<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+						</TD>
+					
+						</TR>
+					<TR>
+						
+						<TD><label for="dessert" class="select" data-theme="d" >Dessert</label></TD>
+						<TD><select name="dessert" id="dessert" data-theme="d">
+						<option value="None">None</option>
+							<option value="Pound Cake">Pound Cake:$25.00</option>
+							<option value="Cookies">Cookies:$10.00</option>
+						</select>
+						</TD>
+						<TD>
+						<label for="qtyDessert" class="select" data-theme="d" ></label>
+						<select name="qtyDessert" id="qty" data-theme="d">
+						<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+						</TD>
+					
+						</TR>
+						</TABLE></center>
+						
+						
+                    <h3 id="notification"></h3>
+                    <button data-theme="b" id="submit" type="submit">Submit</button>
+                </div>
+            </form>
+		
+	</div>
+    <div data-role="footer" data-theme="d" data-position="fixed">
+	<a href="index.html" class="ui-btn-left" data-rel="back" data-inline="true">Back</a>
+</div>
+	
+</div>
+
+</body>
+</html>
